@@ -25,17 +25,22 @@ d4 = datafr.groupby(by = 'Year').sum()
 d4= d4.reset_index()
 sns.countplot(x = datafr2['Year'], hue = datafr2['Open'])
 
-fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(4, 4))
+fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(6, 10))
 
-# Plot each one
+# --- Plot 1 ---
 ax1.bar(d4['Year'], d4['Open'], color='blue')
 ax1.set_title('Yearly Open Price')
+ax1.tick_params(axis='x', rotation=90)  # Rotates labels 90 degrees
 
+# --- Plot 2 ---
 ax2.bar(d4['Year'], d4['Close'], color='green')
 ax2.set_title('Yearly Close Price')
+ax2.tick_params(axis='x', rotation=90)
 
+# --- Plot 3 ---
 ax3.bar(d4['Year'], d4['High'], color='red')
 ax3.set_title('Yearly High Price')
+ax3.tick_params(axis='x', rotation=90)
 
-plt.tight_layout() # Prevents labels from overlapping
+plt.tight_layout() 
 plt.show()

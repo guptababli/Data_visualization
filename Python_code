@@ -1,0 +1,41 @@
+from google.colab import files
+file3 = files.upload()
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df3 = pd.read_csv('NKE.csv')
+df3.head()
+df3.info()
+df3['Date']= pd.to_datetime(df3['Date'])
+df3.info()
+df3.head()
+df3['Year']= df3['Year'].dt.strftime('%Y')
+#opening price of stock
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#sns.countplot(x = df3['Year'], y = df3['Open'],hue = d['Close'])
+#df3['Year'].groupby()
+#df3.drop(columns = 'Date', inplace = True)
+df4 = df3.groupby(by = 'Year').sum()
+df4
+datafr.drop(columns = 'Date',inplace=True)
+d4 = datafr.groupby(by = 'Year').sum()
+d4= d4.reset_index()
+sns.countplot(x = datafr2['Year'], hue = datafr2['Open'])
+
+fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(4, 4))
+
+# Plot each one
+ax1.bar(d4['Year'], d4['Open'], color='blue')
+ax1.set_title('Yearly Open Price')
+
+ax2.bar(d4['Year'], d4['Close'], color='green')
+ax2.set_title('Yearly Close Price')
+
+ax3.bar(d4['Year'], d4['High'], color='red')
+ax3.set_title('Yearly High Price')
+
+plt.tight_layout() # Prevents labels from overlapping
+plt.show()
